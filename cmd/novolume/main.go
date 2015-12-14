@@ -4,10 +4,8 @@ import (
 	"regexp"
 
 	"github.com/Sirupsen/logrus"
+	docker "github.com/docker/docker/api/client/lib"
 	"github.com/runcom/dkauthz"
-	// put back the original go-dockerclient once https://github.com/fsouza/go-dockerclient/pull/435
-	// is merged
-	docker "github.com/runcom/go-dockerclient"
 )
 
 type novolume struct {
@@ -38,11 +36,11 @@ func (p *novolume) AuthZReq(req dkauthz.Request) dkauthz.Response {
 			return resp(false)
 		}
 
-		container, err := p.client.InspectContainer(res[1])
+		container, err := p.client.ContainerInspect(res[1])
 		if err != nil {
 			return resp(err)
 		}
-		image, err := p.client.InspectImage(container.Image)
+		image, _, err := p.client.ImageInspectWithRaw(container.Image, false)
 		if err != nil {
 			return resp(err)
 		}
@@ -68,7 +66,7 @@ func newPlugin(client *docker.Client) *novolume {
 func main() {
 	// TODO(runcom): parametrize this when the bin starts
 	endpoint := "unix:///var/run/docker.sock"
-	client, err := docker.NewClient(endpoint)
+	client, err := docker.NewClient(endpoint, nil, nil)
 	if err != nil {
 		logrus.Fatal(err)
 	}
