@@ -26,20 +26,14 @@ type Response struct {
 	Err string
 }
 
-// Plugin represent the interface a plugin must fulfill.
-type Plugin interface {
-	AuthZReq(Request) Response
-	AuthZRes(Request) Response
-}
-
 // Handler forwards requests and responses between the docker daemon and the plugin.
 type Handler struct {
-	plugin Plugin
+	plugin authorization.Plugin
 	mux    *http.ServeMux
 }
 
 // NewHandler initializes the request handler with a plugin implementation.
-func NewHandler(plugin Plugin) *Handler {
+func NewHandler(plugin authorization.Plugin) *Handler {
 	h := &Handler{plugin, http.NewServeMux()}
 	h.initMux()
 	return h
