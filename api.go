@@ -21,10 +21,7 @@ const (
 
 type Request authorization.Request
 
-type Response struct {
-	authorization.Response
-	Err string
-}
+type Response authorization.Request
 
 // Handler forwards requests and responses between the docker daemon and the plugin.
 type Handler struct {
