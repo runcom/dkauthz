@@ -21,7 +21,7 @@ const (
 
 type Request authorization.Request
 
-type Response authorization.Request
+type Response authorization.Response
 
 // Handler forwards requests and responses between the docker daemon and the plugin.
 type Handler struct {
@@ -43,7 +43,7 @@ func (h *Handler) initMux() {
 	})
 
 	h.handle(reqPath, func(req Request) Response {
-		return h.plugin.AuthZApiRequest(req)
+		return h.plugin.AuthZRequest(req)
 	})
 
 	h.handle(resPath, func(req Request) Response {
