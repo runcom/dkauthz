@@ -21,7 +21,7 @@ const (
 
 type Request authorization.Request
 
-type Response authorization.Request
+type Response authorization.Response
 
 // Plugin represent the interface a plugin must fulfill.
 type Plugin interface {
