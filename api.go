@@ -43,11 +43,11 @@ func (h *Handler) initMux() {
 	})
 
 	h.handle(reqPath, func(req Request) Response {
-		return h.plugin.AuthZApiRequest(req)
+		return h.plugin.AuthZReq(req)
 	})
 
 	h.handle(resPath, func(req Request) Response {
-		return h.plugin.AuthZResponse(req)
+		return h.plugin.AuthZRes(req)
 	})
 }
 
