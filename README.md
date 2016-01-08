@@ -1,4 +1,4 @@
-# REPOSITORY MOVED TO [https://github.com/docker/go-plugins-helpers](https://github.com/docker/go-plugins-helpers)
+# REPOSITORY MOVED TO [https://github.com/docker/go-plugins-helpers/tree/master/authz](https://github.com/docker/go-plugins-helpers/tree/master/authz)
 
 # Credits
 
