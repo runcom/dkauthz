@@ -1,3 +1,5 @@
+# REPOSITORY MOVED TO [https://github.com/docker/go-plugins-helpers](https://github.com/docker/go-plugins-helpers)
+
 # Credits
 
 Inspired by David's awesome [dkvolume](https://github.com/calavera/dkvolume) and adapted for the authZ api.
